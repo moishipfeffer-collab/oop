@@ -156,6 +156,52 @@ moishi.add_item("Croissant",2.0)
 moishi.add_item("Water", 1.5)
 moishi.print_receipt()
 
+#extra
+#1
+class MenuItem:
+    def __init__(self,name,price,category):
+        self.name=name
+        self.price=price
+        self.category=category
+    def is_drink(self):
+        return "drink" in self.category
+    def is_cheap(self,limit):
+        return self.price < limit
+espresso=MenuItem("espresso",3.5,"hot drink")
+muffin=MenuItem("muffin",2.0,"food")
+print(espresso.is_drink())
+print(espresso.is_cheap(3.0))
+print(muffin.is_drink())
+print(muffin.is_cheap(3.0))
+
+#2
+class Customer:
+    def __init__(self,name,balance):
+        self.name=name
+        self.balance=balance
+        self.points=0
+    def purchase(self,item_name, price):
+        if price<=self.balance:
+            print(self.balance - price)
+            self.points+=10
+        else:
+            print(f"Not enough balance for {item_name}.")
+    def redeem(self):
+        if self.points>=50:
+            print(self.balance+5)
+            self.points=0
+    def status(self):
+        print(f"Name: {self.name} | Balance: ${self.balance} | Points: {self.points}")
+noa=Customer("noa",15.0)
+noa.purchase("bottle",20)
+noa.redeem()
+noa.status() 
+        
+
+
+        
+        
+
 
 
     
