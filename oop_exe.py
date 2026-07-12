@@ -148,7 +148,8 @@ class Receipt:
         return self.subtotal()+self.tax_amount()
     def print_receipt(self):
         for item in self.items:
-            print(f"item: {item[0]}, price: {item[1]}, subtotal: {self.subtotal()}, tax: {self.tax_amount()}, total: {self.total()}")
+            print(f"-{item[0]}: ${item[1]}")
+            print(f"subtotal: ${self.subtotal()}\ntax: ${self.tax_amount()}\ntotal: ${self.total()}")
 moishi=Receipt(0.17)
 moishi.add_item("latte",4.5)
 moishi.add_item("Croissant",2.0)
