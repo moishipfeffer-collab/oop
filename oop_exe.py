@@ -310,15 +310,20 @@ class Combo:
         self.items=items
         self.discount=discount
     def original_price(self):
-        return sum(self.items)
+        total=0
+        for item in self.items:
+            total+=item.price
+        return total
     def combo_price(self):
-        return self.original_price()-self.discount
+        return self.original_price()*(1-self.discount)
     def savings(self):
         return self.original_price()-self.combo_price() 
     def describe(self):
-        print(f"{self.combo_name} | original: {self.original_price} | combo: {self.combo_price} | savings: {self.savings}")
+        print(f"{self.combo_name} | original: {self.original_price()} | combo: {self.combo_price()} | savings: {self.savings()}")
 breakfast=Combo("breakfast",[MenuItem("espresso", 3.5), MenuItem("croissant",2.5)],0.1)
 breakfast.describe()
+
+
 
 
         
