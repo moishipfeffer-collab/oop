@@ -302,10 +302,10 @@ print(hour.discounted_price())
 
 #8
 class Combo:
-    def __init__(self,name,price):
+    def MenuItems(self,name,price):
         self.name=name
         self.price=price
-    def Combo(self, name, items, discount):
+    def __init__(self, name, items, discount):
         self.combo_name=name
         self.items=items
         self.discount=discount
@@ -317,7 +317,8 @@ class Combo:
         return self.original_price()-self.combo_price() 
     def describe(self):
         print(f"{self.combo_name} | original: {self.original_price} | combo: {self.combo_price} | savings: {self.savings}")
-
+breakfast=Combo("breakfast",[MenuItem("espresso", 3.5), MenuItem("croissant",2.5)],0.1)
+breakfast.describe()
 
 
         
