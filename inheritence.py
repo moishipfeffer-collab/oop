@@ -143,7 +143,10 @@ class Athlete:
         self.sessions_completed+=1
     def sessions_needed(self,target):
         self.left=target - self.sessions_completed
-        print(f"{self.sessions_completed} sessions completed. {self.left} more neaded.")
+        if self.left<0:
+            print("under zero! dase not make sens!")
+        else:
+            print(f"{self.sessions_completed} sessions completed. {self.left} more neaded.")
 class Triathlete(Athlete):
     def __init__(self,name,age,discipline):
         super().__init__(name,age)
@@ -203,6 +206,63 @@ ronaldo=ProfessionalAthlete("Ronaldo", 39, "football", "Nike")
 ronaldo.great()
 ronaldo.train()
 ronaldo.sponsor_info()
+
+
+#self learn
+#1
+class Logger:
+    instance = None
+    def __new__(cls):
+        if cls.instance == None:
+            cls.instance=super().__new__(cls)
+        return cls.instance
+s1=Logger()
+s2=Logger()
+print(s1 is s2)
+s1.name="moishi"
+print(s1.name)
+
+#2
+class AppSettings:
+    instance = None
+    def __new__(cls):
+        if cls.instance == None:
+            cls.instance=super().__new__(cls)
+            cls.instance.theme="dark"
+        return cls.instance
+s1=AppSettings()
+s2=AppSettings()
+s1.theme="light"
+print(s2.theme) 
+
+#3
+class Counter:
+    instance = None
+    def __new__(cls):
+        if cls.instance == None:
+            cls.instance=super().__new__(cls)
+            cls.instance.count=0
+        return cls.instance
+    def increment(self):
+        self.count+=1
+c1=Counter()
+c2=Counter()
+c1.increment()
+c1.increment()
+print(c1.count)
+print(c2.count)
+
+
+
+    
+
+
+    
+
+
+
+
+
         
         
 
