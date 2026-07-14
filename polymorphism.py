@@ -181,7 +181,47 @@ SmartAC("living room AC").run_schedule(21)
 SmartTV("samsung TV").run_schedule(21)
 
 #8
+class Device:
+    def __init__(self,name):
+        self.name=name
+    def energy_usage(self):
+        return 10 
+class SmartTV(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def energy_usage(self):
+        return 150
+class SmartAC(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def energy_usage(self):
+        return 900
+class SmartLamp(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def energy_usage(self):
+        return 8
+class SmartSpeaker(Device):
+    def __init__(self, name):
+        super().__init__(name)
+    def energy_usage(self):
+        return 30
+energy_list=[SmartTV("TV"),SmartAC("AC"),SmartLamp("desk lamb"),SmartSpeaker("speaker")]
+total=0
+for e in energy_list:
+    print(f"{e.__class__.__name__}: {e.energy_usage()}")
+    total+=e.energy_usage()
+print(f"total: {total}")
 
+#9
+class Device:
+    def __init__(self,name):
+        
+        
+
+
+    
+        
 
     
 
