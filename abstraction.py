@@ -179,40 +179,76 @@ class DeliveryMethod(ABC):
     @abstractmethod
     def deliver(self,order_id):
         pass
+    @abstractmethod
     def get_eta(self):
         pass
-    def get_cost(distance_km):
+    @abstractmethod
+    def get_cost(self,distance_km):
         pass
 class BikeDelivery(DeliveryMethod):
     def deliver(self,order_id):
         print(f"{order_id} deliverd bt bike")
     def get_eta(self):
         return 10 
-    def get_cost(distance_km):
+    def get_cost(self,distance_km):
         return distance_km * 5
 class DroneDelivery(DeliveryMethod):
     def deliver(self,order_id):
         print(f"{order_id} deliverd bt dron")
     def get_eta(self):
         return 6 
-    def get_cost(distance_km):
-        return distance_km * 8
+    def get_cost(self,distance_km):
+        return distance_km * 10
 class CarDelivery(DeliveryMethod):
     def deliver(self,order_id):
         print(f"{order_id} deliverd bt car")
     def get_eta(self):
-        return 8 
-    def get_cost(distance_km):
-        return distance_km * 7
+        return 10 
+    def get_cost(self,distance_km):
+        return distance_km * 9
 class WalkingDelivery(DeliveryMethod):
     def deliver(self,order_id):
         print(f"{order_id} deliverd by walk")
     def get_eta(self):
         return 20 
-    def get_cost(distance_km):
-        return distance_km * 10
+    def get_cost(self,distance_km):
+        return distance_km * 4
 class Platform:
+    def __init__(self):
+        self.delivries=[BikeDelivery(),DroneDelivery(),CarDelivery(),WalkingDelivery()]
+    def cheapest_option(self,distance_km):
+        cheapest_num=float("inf")
+        cheapest=0
+        for d in self.delivries:
+            if d.get_cost(distance_km) < cheapest_num:
+                cheapest_num=d.get_cost(distance_km)
+                cheapest=d
+        return cheapest
+        
+    def fastest_option(self):
+        fastest_num=float("inf")
+        fastest=None
+        for d in self.delivries:
+            if d.get_eta()<fastest_num:
+                fastest_num=d.get_eta()
+                fastest=d
+        return fastest
+        
+platform = Platform()
+
+
+print(f"Cheapest: {platform.cheapest_option(5.0).__class__.__name__}")
+print(f"Fastest: {platform.fastest_option().__class__.__name__}")
+
     
+    
+
+
+
+            
+
+
+
 
     
 
